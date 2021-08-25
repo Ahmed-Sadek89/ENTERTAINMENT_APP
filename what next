@@ -1,0 +1,49 @@
+//API
+    trending : https://api.themoviedb.org/3/trending/all/week?api_key=${key}&page=${page}`
+    generas  : https://api.themoviedb.org/3/genre/${type}/list?api_key=${key}&language=en-US
+    Movies   : https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreforURL}
+    TV series: https://api.themoviedb.org/3/discover/tv?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreforURL}
+    search   : https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${key}&language=en-US&query=${searchText}&page=${page}&include_adult=false
+    //next
+dataContent  : https://api.themoviedb.org/3/${type}/${id}?api_key=${key}&language=en-US
+    vedio    : https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US
+    casts    : https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${key}&language=en-US
+
+// tools
+    M-ui => core, icons, color, lab
+    react-router
+    react-query
+    styled-components
+
+// firstly
+    
+
+// lately
+    8-- add redux 
+    9-- in page content => make 2 btn (add to lists , watched ) 
+  : )
+
+// finished
+
+1-- download your tools (Mui , Router , ...)
+2-- handle your routers in app.js and set your pages but, firstly make the header and footer and its styles
+    21 - deal with header
+    22 - deal with navigation
+3-- Deal with trending page
+    31-- get api trending
+    32-- deal with this page and trending_component according to its structures and styles
+    33-- Deal with pagination
+4-- Deal with movies page
+    41-- mapping for movies accoriding to api
+    42-- create pagination and deal with api page
+    43-- fetch generas according to type===movie and make its styles
+    44-- mapping through movies according to one or more selected generas
+    45-- make the same in TV series page
+5-- Deal with seach according to movies or TV series page
+6-- if i choose movie , tv series or trending => show information about it
+    61-- make the route according to the id content
+    62-- make components for for content page
+        621-- deal with content info according to api , structures and styles
+        622-- deal with content casts according to api , structures and styles
+        623-- deal with content trailer according to api , structures and styles
+7-- handle mediaQuery
