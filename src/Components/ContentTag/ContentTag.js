@@ -1,4 +1,3 @@
-// material-ui
 // components
 import {img_300, unavailable} from '../config';
 // tools

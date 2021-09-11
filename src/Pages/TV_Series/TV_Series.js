@@ -8,7 +8,7 @@ import { fetchTVSeries } from '../../Components/API/API';
 import ContentTag from '../../Components/ContentTag/ContentTag';
 import CustomPagination from '../../Components/CustomPagination/CustomPagination';
 import Gennres from '../../Components/Gennres/Gennres'
-import genresURL from '../../Components/Hooks/Hooks'
+import SelectedGenn from '../../Components/SelectedGenn/SelectedGenn';
 // tools
 import { useQuery } from "react-query";
 import { useState } from 'react';
@@ -17,20 +17,27 @@ import {Address} from './Styles';
 import {useStyles} from './Styles'
 
 
-const TV_Series = () => {
+const TV_Series = (props) => {
   const classes = useStyles()
   const [page, setPage] = useState(1);
-  let [SelectedGennres, setSelectedGennres] = useState([]);
-  const genresURL1 = genresURL(SelectedGennres);
-  const {data, status} = useQuery(['fetchTVSeries', page, genresURL1], () => fetchTVSeries(page, genresURL1),
+  // for gennres
+  const [gennres, setGennres] = useState([]);
+  //
+  // for routing 
+  const pageTVNumber = parseInt(props.match.params.page);
+  const genURLTV = props.match.params.genURL === '0' ? '' : props.match.params.genURL;
+  const TVPath = props.match.path === '/tv_series/:page/:genURL' ? true : false;
+  // for insure that gennrus is empty or not
+   const checkEmptyGenn = props.match.params.genURL === '0' ? true : false  
+  //
+  //
+  const {data, status} = useQuery(['fetchTVSeries', pageTVNumber, genURLTV], () => fetchTVSeries(pageTVNumber, genURLTV),
   {
   keepPreviousData: true,
   cacheTime: 100 // time to get fetching
   })
   
-  console.log(data)
   
-  console.log('page now is ', page)
     return (
       <Container>
         <Address variant='h4'>
@@ -50,9 +57,25 @@ const TV_Series = () => {
             <Gennres
               type='tv'
               setPage={setPage}
-              SelectedGennres={SelectedGennres}
-              setSelectedGennres={setSelectedGennres}
+              className={classes.gen}
+              genURLTV={genURLTV}
+              gennres={gennres} 
+              setGennres={setGennres}
             />
+           { 
+            checkEmptyGenn !==true &&
+            <>
+              <h1 style={{margin:'0px', marginBottom:'3px'}}>selected Gennres</h1>
+              <SelectedGenn
+                type='tv'
+                genURLTV={genURLTV}
+                setPage={setPage}
+                className={classes.gen}
+                gennres={gennres} 
+                setGennres={setGennres}
+              />
+            </>
+            }
             {/*  set Gennres according to type */}
 
 
@@ -84,7 +107,13 @@ const TV_Series = () => {
             {/*  set pagination */}
             {
               data.total_pages > 1 && 
-              <CustomPagination count={data.total_pages} page={page} setPage={setPage} />
+              <CustomPagination 
+                count={data.total_pages} 
+                setPage={setPage} 
+                pageTVNumber={pageTVNumber}
+                TVPath={TVPath}
+                genURLTV={genURLTV}
+              />
             }
             {/*  set pagination */}
 

@@ -16,7 +16,7 @@ const ContentCasts = ({type, id}) => {
             cacheTime: 500
         }
     );
-    console.log('casts => ' , data)
+    //console.log('casts => ' , data)
     return (
         <>
         <h5 style={{margin:'0px', fontSize: '15px', textAlign: 'center'}}>Casts..</h5>

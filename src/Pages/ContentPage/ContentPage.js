@@ -9,7 +9,7 @@ import ContentInfo from '../../Components/ContentPageComponents/ContentInfo/Cont
 const ContentPage=(props) => {
     const id = parseInt(props.match.params.id) ? parseInt(props.match.params.id) : null; 
     const type = props.match.params.type === 'person' ? '' : props.match.params.type;
-    console.log(props.match.params)
+    //console.log(props.match.params)
     return (
         <Container>
            {

@@ -17,17 +17,17 @@ import {useStyles} from './Styles'
 
 const Trendings = (props) => {
   const classes = useStyles()
-  console.log(props.match)
   const [page, setPage] = useState(1);
-  const {data, status} = useQuery(['fetchTrending', page],() => fetchTrending(page),
+  // for routing and fetching api
+  const pageTrendingNum = parseInt(props.match.params.page)
+  const trendingPath = props.match.path === '/trendings/:page' ? true : false;
+  const {data, status} = useQuery(['fetchTrending', pageTrendingNum],() => fetchTrending(pageTrendingNum),
   {
   keepPreviousData: true,
-  cacheTime: 300 // time to get fetching
+  cacheTime: 300 //  => time to get fetching
   })
-  
-  console.log(data)
-  
-  console.log('page now is ', page)
+  //
+
     return (
       <Container>
         <Address variant='h4'>
@@ -68,7 +68,13 @@ const Trendings = (props) => {
             {/*  set pagination */}
             {
               data.total_pages > 0 && 
-              <CustomPagination count={data.total_pages} page={page} setPage={setPage} />
+              <CustomPagination
+                count={data.total_pages}
+                page={page}
+                setPage={setPage}
+                pageTrendingNum={pageTrendingNum}
+                trendingPath={trendingPath} 
+              />
             }
             {/*  set pagination */}
 
@@ -80,4 +86,3 @@ const Trendings = (props) => {
   }
   
   export default Trendings;
-  

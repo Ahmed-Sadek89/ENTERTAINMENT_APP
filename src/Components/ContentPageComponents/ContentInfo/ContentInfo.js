@@ -5,12 +5,13 @@ import Grid from '@material-ui/core/Grid';
 import {useQuery} from 'react-query';
 //components
 import ContentCasts from '../ContentCasts/ContentCasts';
+import ContentControl from '../ContentControl/ContentControl';
 import ContentTrailer from '../ContentTrailer/ContentTrailer';
 import {fetchContentInfo} from '../../API/API';
 import {img_500, unavailable} from '../../config';
 //styles
 import { useStyles } from './Styles';
-import {Overlay, Img, LineHeight, Name, Tagline, Overview} from './Styles';
+import {Overlay, Img, LineHeight, Name, Tagline, Overview, ButtonContent} from './Styles';
 
 
 const ContentInfo = ({type, id}) => {
@@ -21,7 +22,6 @@ const ContentInfo = ({type, id}) => {
             cacheTime: 500
         }
     );
-    console.log('ContentInfo :',data)
     return (
         <>
             {
@@ -53,8 +53,11 @@ const ContentInfo = ({type, id}) => {
                         <Grid item xs={12} sm={12} md={12} lg={12}  style={{margin: '20px 0px'}} >
                             <ContentCasts type={type} id={id} />
                         </Grid>
-                        
+                        <ButtonContent item xs={12} sm={12} md={12} lg={12} style={{margin: '20px 0px'}} >
+                            <ContentControl type={type} id={id} data={data} />
+                        </ButtonContent>
                     </LineHeight>
+                    
                     <Grid item xs={12} sm={12} md={12} lg={12} style={{margin: '20px 0px'}} >
                             <ContentTrailer type={type} id={id} />
                     </Grid>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {Grid, makeStyles} from '@material-ui/core';
 
-export const useStyles = makeStyles((theme) => {
+export const useStyles = makeStyles(() => {
     return{
         statusMSG:{
             textAlign:'center',
@@ -43,3 +43,8 @@ export const Overview = styled(Grid)`
     border-radius: 20px;
     font-size: 15px;
 `;
+export const ButtonContent = styled(Grid)`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+`

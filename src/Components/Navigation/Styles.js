@@ -10,6 +10,7 @@ export const useStyles = makeStyles((theme) =>{
         action:{
             color: '#fff',
             lineHeight: '29px',
+            margin: '-10px'
         }
     }
 })

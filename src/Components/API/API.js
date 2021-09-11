@@ -15,10 +15,10 @@ export const fetchTVSeries = async (page,genresURL) =>{
     return res.json();
 }
 
-export const fetchGennres = async (type) =>{
-    const res = await fetch(`https://api.themoviedb.org/3/genre/${type}/list?api_key=${key}&language=en-US`);
-    return res.json();
-}
+// export const fetchGennres = async (type) =>{
+//     const res = await fetch(`https://api.themoviedb.org/3/genre/${type}/list?api_key=${key}&language=en-US`);
+//     return res.json();
+// }
 
 export const fetchSearch = async (type, searchText = '', page) =>{
     const res = await fetch(`https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${key}&language=en-US&query=${searchText}&page=${page}&include_adult=false`);

@@ -15,11 +15,14 @@ import {theme} from './Styles'
 
 //fetchSearch = async (type, searchText, page)
 
-const Search = () => {
+const Search = (props) => {
   const classes = useStyles();
   const [type, setType] = useState(0);
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState('');
+  // for routing 
+  const searchPath = props.match.path === '/search' ? true : false
+  //
   const {data, status} = useQuery(
     ['fetchSearch', type, searchText, page ],
     () => fetchSearch(type, searchText, page),{
@@ -31,7 +34,6 @@ const Search = () => {
     setPage(1)
     setType(value)
   }
-  console.log(data)
 
     return (
       <Container>
@@ -90,7 +92,12 @@ const Search = () => {
               {/*  set pagination */}
               {
                 data.total_pages > 1 && 
-                <CustomPagination count={data.total_pages} page={page} setPage={setPage} />
+                <CustomPagination 
+                  count={data.total_pages}
+                  page={page} 
+                  setPage={setPage} 
+                  searchPath={searchPath}
+                />
               }
               {/*  set pagination */}
 

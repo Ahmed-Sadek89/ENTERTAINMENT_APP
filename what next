@@ -11,16 +11,18 @@ dataContent  : https://api.themoviedb.org/3/${type}/${id}?api_key=${key}&languag
 
 // tools
     M-ui => core, icons, color, lab
+    react-hooks => useState, useEffect
     react-router
     react-query
     styled-components
-
+    redux react-redux
+    redux-logger redux-devtools-extension
+    axios => for api that you set updating on it
 // firstly
     
 
 // lately
-    8-- add redux 
-    9-- in page content => make 2 btn (add to lists , watched ) 
+
   : )
 
 // finished
@@ -47,3 +49,5 @@ dataContent  : https://api.themoviedb.org/3/${type}/${id}?api_key=${key}&languag
         622-- deal with content casts according to api , structures and styles
         623-- deal with content trailer according to api , structures and styles
 7-- handle mediaQuery
+8-- add redux 
+9-- in page content => make 2 btn (add to lists , watched ) 

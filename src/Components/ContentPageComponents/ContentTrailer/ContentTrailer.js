@@ -25,7 +25,7 @@ const ContentTrailer = ({type,id}) => {
             cacheTime:500
         }
       );
-      console.log('vedio => ',data)
+      //console.log('vedio => ',data)
       //const vedID = data.results[0].key
     return (
         <>
